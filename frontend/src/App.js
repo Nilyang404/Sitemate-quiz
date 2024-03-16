@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
+import "./index.css";
 import axios from "axios";
-
 function App() {
   //States
   const [objects, setObjects] = useState(null);
@@ -89,7 +89,7 @@ function App() {
   //Return
   return (
     <div className="App">
-      <h2>POST: create object</h2>
+      <h2>Create Object</h2>
       <form onSubmit={CreateObject}>
         <input
           onChange={updateCreateForm}
@@ -115,7 +115,7 @@ function App() {
         <button type="submit">Create</button>
       </form>
 
-      <h2>UPDATE: update object</h2>
+      <h2>Update Object</h2>
       <form onSubmit={UpdateObject}>
         <input
           onChange={updateUpdateForm}
