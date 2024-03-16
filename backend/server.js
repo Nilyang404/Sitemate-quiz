@@ -30,7 +30,76 @@ app.post("/object", async (req, res) => {
   });
   try {
     await object.save();
+    console.log("Object created:");
+    console.log(object);
     res.status(201).send(object);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
+// Get objects
+
+app.get("/objects", async (req, res) => {
+  try {
+    const objects = await Object.find();
+    if (!objects) {
+      res.status(404).send("Objects not found");
+    } else {
+      res.status(200).json({ objects: objects });
+    }
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
+// get object by _id
+app.get("/object/:_id", async (req, res) => {
+  const { _id } = req.params;
+  try {
+    const object = await Object.findById(_id);
+    if (!object) {
+      res.status(404).send("Object not found");
+    } else {
+      res.status(200).json(object);
+    }
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
+// update by _id
+app.put("/object/:_id", async (req, res) => {
+  const { _id } = req.params;
+  const { id, title, description } = req.body;
+  try {
+    const object = await Object.findByIdAndUpdate(
+      _id,
+      { id, title, description },
+      { new: true }
+    );
+    if (!object) {
+      res.status(404).send("Object not found");
+    }
+    console.log("Object updated");
+    console.log(object);
+    res.status(200).json(object);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
+// delete by _id
+app.delete("/object/:_id", async (req, res) => {
+  const { _id } = req.params;
+  try {
+    const object = await Object.findByIdAndDelete(_id);
+    if (!object) {
+      res.status(404).send("Object not found");
+    }
+    console.log("Object deleted:");
+    console.log(object);
+    res.status(200).json(object);
   } catch (error) {
     res.status(500).send(error);
   }
