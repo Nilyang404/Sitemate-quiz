@@ -2,7 +2,7 @@
 
 Hi Sitemate,
 
-Tor some reason I paste the wrong loom video, here is the correct one:
+For some reason I recorded a bad loom video, here is the good one:
 
 [Pre video](https://www.loom.com/share/7de0ead1585e4becb9148f9e4eb165c9?sid=249dc380-58fc-427d-925e-62887fc63fd8)
 
